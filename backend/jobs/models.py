@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from pgvector.django import VectorField
 
 
 class SearchedJob(models.Model):
@@ -100,3 +101,115 @@ class UserFeedback(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.user.username} ({self.feedback_type})"
+
+
+class CareerCategory(models.Model):
+    """Categories for different types of roles/career paths"""
+    name = models.CharField(max_length=100, unique=True)  # "CTO", "Head of IT", "Technical Leadership"
+    keywords = models.JSONField(default=list, blank=True)  # Alternative job titles that match
+    description = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Career Categories"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class PersonalInsight(models.Model):
+    """User's personal insights and motivations for different career contexts"""
+    INSIGHT_TYPES = [
+        ('company_motivation', 'Why This Company'),
+        ('career_motivation', 'Career Motivation'), 
+        ('leadership_style', 'Leadership Approach'),
+        ('work_values', 'Professional Values'),
+        ('unique_value', 'Unique Value Proposition'),
+        ('industry_knowledge', 'Industry Insights'),
+        ('problem_solving', 'Problem Solving Approach'),
+        ('team_building', 'Team Building Philosophy'),
+        ('change_management', 'Change Management Style'),
+        ('technical_vision', 'Technical Vision'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='personal_insights')
+    category = models.ForeignKey(CareerCategory, on_delete=models.CASCADE, related_name='insights')
+    insight_type = models.CharField(max_length=50, choices=INSIGHT_TYPES)
+    question = models.TextField()  # The question that was answered
+    content = models.TextField()  # User's response
+    embedding = VectorField(dimensions=1536, null=True, blank=True)  # OpenAI embedding
+    tags = models.JSONField(default=list, blank=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        unique_together = ['user', 'category', 'insight_type']  # One insight per type per category per user
+
+    def __str__(self):
+        return f"{self.user.username} - {self.category.name} - {self.get_insight_type_display()}"
+
+
+class JobInsightMatch(models.Model):
+    """Tracks which insights match well with which jobs"""
+    searched_job = models.ForeignKey(SearchedJob, on_delete=models.CASCADE, related_name='insight_matches')
+    matched_insight = models.ForeignKey(PersonalInsight, on_delete=models.CASCADE, related_name='job_matches')
+    relevance_score = models.FloatField()  # Cosine similarity score (0-1)
+    category_match_bonus = models.FloatField(default=0.0)  # Additional bonus for category alignment
+    final_score = models.FloatField()  # Combined score for ranking
+    is_used_in_narrative = models.BooleanField(default=False)  # Whether this insight was used in generated content
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-final_score']
+        unique_together = ['searched_job', 'matched_insight']
+
+    def __str__(self):
+        return f"{self.searched_job.job_title} <- {self.matched_insight.insight_type} (Score: {self.final_score:.3f})"
+
+
+class GeneratedNarrative(models.Model):
+    """AI-generated narrative content for job applications"""
+    NARRATIVE_TYPES = [
+        ('cover_letter', 'Cover Letter'),
+        ('summary', 'Professional Summary'),
+        ('motivation', 'Motivation Statement'),
+        ('value_proposition', 'Value Proposition'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='generated_narratives')
+    searched_job = models.ForeignKey(SearchedJob, on_delete=models.CASCADE, related_name='generated_narratives')
+    narrative_type = models.CharField(max_length=30, choices=NARRATIVE_TYPES)
+    content = models.TextField()
+    insights_used = models.ManyToManyField(PersonalInsight, through='NarrativeInsightUsage')
+    generation_prompt = models.TextField(blank=True)  # Store the prompt used for generation
+    ai_model_used = models.CharField(max_length=100, default='openai/gpt-5-chat')
+    user_feedback = models.TextField(blank=True)  # User's notes/edits
+    is_approved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        unique_together = ['searched_job', 'narrative_type']  # One narrative per type per job
+
+    def __str__(self):
+        return f"{self.searched_job.job_title} - {self.get_narrative_type_display()}"
+
+
+class NarrativeInsightUsage(models.Model):
+    """Through table tracking how insights were used in narratives"""
+    narrative = models.ForeignKey(GeneratedNarrative, on_delete=models.CASCADE)
+    insight = models.ForeignKey(PersonalInsight, on_delete=models.CASCADE)
+    usage_weight = models.FloatField()  # How heavily this insight influenced the narrative (0-1)
+    specific_content = models.TextField(blank=True)  # Specific text that came from this insight
+    
+    class Meta:
+        unique_together = ['narrative', 'insight']
+
+    def __str__(self):
+        return f"{self.narrative} uses {self.insight.insight_type} (Weight: {self.usage_weight:.2f})"
