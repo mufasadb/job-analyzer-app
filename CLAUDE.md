@@ -71,6 +71,32 @@ cd frontend
 - `DELETE /api/jobs/experiences/{id}/` - Delete experience
 - `POST /api/jobs/experiences/enhance/` - AI-enhance experience description
 
+### Career Insights & Vector Search 🚀NEW
+- `GET /api/jobs/categories/` - List career categories (CTO, Head of IT, etc.)
+- `POST /api/jobs/categories/` - Create new career category
+- `GET /api/jobs/categories/{id}/` - Get specific career category
+- `PUT /api/jobs/categories/{id}/` - Update career category
+- `DELETE /api/jobs/categories/{id}/` - Delete career category
+- `GET /api/jobs/categories/{id}/questions/` - Get suggested questions for category
+
+### Personal Insights Management
+- `GET /api/jobs/insights/` - List user's personal insights
+- `POST /api/jobs/insights/` - Create new personal insight (auto-generates embeddings)
+- `GET /api/jobs/insights/{id}/` - Get specific insight
+- `PUT /api/jobs/insights/{id}/` - Update insight (regenerates embeddings)
+- `DELETE /api/jobs/insights/{id}/` - Delete insight
+
+### Vector Similarity Matching
+- `POST /api/jobs/{job-id}/match-insights/` - Find insights that match job using vector similarity
+- `GET /api/jobs/{job-id}/insights/` - Get job details with matched insights and narratives
+
+### AI Narrative Generation
+- `POST /api/jobs/{job-id}/generate-narrative/` - Generate AI cover letters/summaries from matched insights
+- `GET /api/jobs/narratives/` - List user's generated narratives
+- `GET /api/jobs/narratives/{id}/` - Get specific generated narrative
+- `PUT /api/jobs/narratives/{id}/` - Update narrative (add feedback, approve, etc.)
+- `DELETE /api/jobs/narratives/{id}/` - Delete generated narrative
+
 ### User Feedback Management
 - `GET /api/jobs/feedback/` - List user's feedback (supports filtering by type, priority, implementation status)
 - `POST /api/jobs/feedback/` - Create new feedback
