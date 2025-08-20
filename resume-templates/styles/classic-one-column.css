@@ -1,0 +1,384 @@
+/* Classic One-Column Resume Template - Exact Estelle Darcy Style */
+:root {
+    --text-primary: #000;
+    --text-secondary: #333;
+    --text-light: #666;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    line-height: 1.5;
+    color: var(--text-primary);
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 1in;
+    background: #fff;
+    font-size: 11pt;
+}
+
+.resume-container {
+    width: 100%;
+}
+
+/* Header Section - Exact Estelle Darcy Style */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.name-header {
+    font-size: 32pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 0.3rem;
+    color: var(--accent-color, var(--text-primary));
+}
+
+.job-title {
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color, var(--text-primary));
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.contact-info {
+    font-size: 11pt;
+    color: var(--text-primary);
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+/* Section Styling - Bold Headers */
+.section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* Summary Section */
+.summary {
+    font-size: 11pt;
+    line-height: 1.6;
+    text-align: justify;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid var(--accent-color, #333);
+}
+
+/* Professional Skills - Two Column Layout */
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.skill-column {
+    margin-bottom: 1rem;
+}
+
+.skill-category-title {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.skill-list {
+    list-style: none;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: var(--text-primary);
+}
+
+.skill-list li {
+    position: relative;
+    padding-left: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.skill-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+/* Professional Experience Section */
+.experience-item {
+    margin-bottom: 1.8rem;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.job-info {
+    flex: 1;
+}
+
+.position-title {
+    font-size: 11pt;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.date-range {
+    font-size: 11pt;
+    color: var(--text-primary);
+    text-align: right;
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+
+.achievement-list {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.achievement-list li {
+    position: relative;
+    padding-left: 0.8rem;
+    margin-bottom: 0.3rem;
+    font-size: 10pt;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.achievement-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+/* Projects Section */
+.project-item {
+    margin-bottom: 1.5rem;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.3rem;
+}
+
+.project-name {
+    font-size: 11pt;
+    font-weight: bold;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.project-date {
+    font-size: 11pt;
+    color: var(--text-primary);
+    text-align: right;
+    margin-left: 1rem;
+}
+
+.project-university {
+    font-size: 10pt;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.project-details {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.project-details li {
+    position: relative;
+    padding-left: 0.8rem;
+    margin-bottom: 0.3rem;
+    font-size: 10pt;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.project-details li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+/* Education Section */
+.education-item {
+    margin-bottom: 1.5rem;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.3rem;
+}
+
+.edu-info {
+    flex: 1;
+}
+
+.degree {
+    font-size: 11pt;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.edu-date {
+    font-size: 11pt;
+    color: var(--text-primary);
+    text-align: right;
+    margin-left: 1rem;
+}
+
+.coursework {
+    font-size: 10pt;
+    color: var(--text-primary);
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* Additional Information Section */
+.additional-info {
+    font-size: 10pt;
+    line-height: 1.6;
+}
+
+.info-item {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        padding: 0.75in;
+        font-size: 10pt;
+    }
+    
+    .name-header {
+        font-size: 28pt;
+        letter-spacing: 3px;
+    }
+    
+    .job-title {
+        font-size: 12pt;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+        margin-bottom: 16pt;
+    }
+    
+    .section-title {
+        font-size: 11pt;
+        margin-bottom: 8pt;
+    }
+    
+    .experience-item, .education-item, .project-item {
+        page-break-inside: avoid;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        font-size: 10pt;
+    }
+    
+    .name-header {
+        font-size: 24pt;
+        letter-spacing: 2px;
+    }
+    
+    .job-title {
+        font-size: 12pt;
+        letter-spacing: 1px;
+    }
+    
+    .job-header {
+        flex-direction: column;
+    }
+    
+    .date-range {
+        text-align: left;
+        margin-top: 0.3rem;
+        margin-left: 0;
+    }
+    
+    .education-header {
+        flex-direction: column;
+    }
+    
+    .edu-date {
+        text-align: left;
+        margin-top: 0.3rem;
+        margin-left: 0;
+    }
+    
+    .project-header {
+        flex-direction: column;
+    }
+    
+    .project-date {
+        text-align: left;
+        margin-top: 0.3rem;
+        margin-left: 0;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .name-header {
+        font-size: 20pt;
+        letter-spacing: 1px;
+    }
+    
+    .section-title {
+        font-size: 11pt;
+        letter-spacing: 0.5px;
+    }
+}

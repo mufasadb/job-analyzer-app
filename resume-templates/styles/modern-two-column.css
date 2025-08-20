@@ -1,0 +1,389 @@
+/* Modern Two-Column Clean Resume Template */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Calibri', 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.75in;
+    background: #fff;
+}
+
+.resume-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+/* Header Section - Full Width - Ultra Compressed */
+.header {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid #2c5aa0;
+}
+
+.header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+    color: #2c5aa0;
+    line-height: 1.1;
+}
+
+.header .title {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.1rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.contact-info {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.contact-info span {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Main Content Area - Two Columns */
+.content-area {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 2.5rem;
+    margin-top: 1rem;
+}
+
+/* Left Sidebar */
+.sidebar {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.sidebar .section {
+    margin-bottom: 2rem;
+}
+
+.sidebar .section:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    color: #2c5aa0;
+    border-bottom: 2px solid #2c5aa0;
+    padding-bottom: 0.3rem;
+}
+
+/* Right Main Content */
+.main-content {
+    padding-left: 0;
+}
+
+.main-content .section {
+    margin-bottom: 2.5rem;
+}
+
+.main-content .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    color: #2c5aa0;
+    border-bottom: 2px solid #2c5aa0;
+    padding-bottom: 0.4rem;
+}
+
+/* Sidebar Skills Styling */
+.skill-category {
+    margin-bottom: 1.5rem;
+}
+
+.skill-category h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skill-tag {
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #bbdefb;
+}
+
+.skill-list {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Contact Information in Sidebar */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.contact-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* Summary Section */
+.summary {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+    color: #444;
+}
+
+/* Experience Section */
+.experience-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.experience-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.job-header {
+    margin-bottom: 0.8rem;
+}
+
+.job-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c5aa0;
+    margin-bottom: 0.2rem;
+}
+
+.company {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.date-location {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+.job-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.8rem 0;
+    line-height: 1.6;
+}
+
+.achievements {
+    list-style: none;
+    margin-top: 0.8rem;
+}
+
+.achievements li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.achievements li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #2c5aa0;
+    font-weight: bold;
+}
+
+/* Education Section */
+.education-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.education-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.degree {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2c5aa0;
+    margin-bottom: 0.2rem;
+}
+
+.school {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.edu-details {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Projects Section */
+.project-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.project-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2c5aa0;
+    margin-bottom: 0.3rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.project-technologies {
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Certifications & Awards in Sidebar */
+.cert-item, .award-item {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 6px;
+    border-left: 3px solid #2c5aa0;
+}
+
+.cert-name, .award-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.cert-details, .award-details {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.cert-date {
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        padding: 0.5in;
+        font-size: 11pt;
+    }
+    
+    .content-area {
+        gap: 1.5rem;
+    }
+    
+    .sidebar {
+        background: #f5f5f5;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content-area {
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .content-area {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .sidebar {
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}

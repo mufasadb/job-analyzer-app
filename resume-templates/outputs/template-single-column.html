@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Alexandra Chen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .color-picker {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .color-picker select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 11in;
+        }
+        
+        .header {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary-color, #4a90e2) 0%, var(--secondary-color, #357abd) 100%);
+            color: white;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .photo-container {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            flex-shrink: 0;
+        }
+        
+        .header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .name {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+        
+        .title {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            margin: 0;
+            line-height: 1.1;
+        }
+        
+        .contact-bar {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.1;
+        }
+        
+        .main-content {
+            padding: 0 40px 40px;
+        }
+        
+        .section {
+            margin: 35px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color, #4a90e2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color, #7bb3f0);
+            border-radius: 2px;
+        }
+        
+        .summary-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color, #4a90e2);
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color, #4a90e2);
+            margin: 0;
+        }
+        
+        .job-date {
+            font-size: 14px;
+            color: #666;
+            background: var(--accent-color, #7bb3f0);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+        
+        .company-name {
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .job-description {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        .achievements {
+            list-style: none;
+        }
+        
+        .achievements li {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .achievements li::before {
+            content: "✓";
+            color: var(--primary-color, #4a90e2);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-color, #7bb3f0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: white;
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .education-item {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color, #4a90e2);
+        }
+        
+        .degree {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color, #4a90e2);
+            margin-bottom: 5px;
+        }
+        
+        .school {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .education-details {
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .additional-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .info-card h3 {
+            font-size: 16px;
+            color: var(--primary-color, #4a90e2);
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: var(--accent-color, #7bb3f0);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .project-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        
+        .project-name {
+            font-weight: bold;
+            color: var(--primary-color, #4a90e2);
+            margin-bottom: 5px;
+        }
+        
+        .project-description {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        
+        .project-tech {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+        }
+        
+        @media print {
+            .color-picker { display: none; }
+            .resume-container { box-shadow: none; }
+            body { -webkit-print-color-adjust: exact; }
+        }
+        
+        @media (max-width: 768px) {
+            .header { 
+                padding: 25px 20px; 
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .header-content {
+                gap: 10px;
+            }
+            .main-content { padding: 0 20px 30px; }
+            .contact-bar { gap: 15px; justify-content: center; }
+            .job-header { flex-direction: column; align-items: flex-start; }
+            .education-grid, .additional-info { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="color-picker">
+        <label for="colorSelect">Theme Color:</label>
+        <select id="colorSelect" onchange="changeColor(this.value)">
+            <option value="blue">Blue (Default)</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="teal">Teal</option>
+            <option value="orange">Orange</option>
+            <option value="navy">Navy</option>
+        </select>
+    </div>
+
+    <div class="resume-container">
+        <header class="header">
+            <div class="photo-container">
+                Professional Photo
+            </div>
+            <div class="header-content">
+                <h1 class="name">Alexandra Chen</h1>
+                <p class="title">Senior Software Engineer</p>
+                <div class="contact-bar">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>alexandra.chen@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>San Francisco, CA</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <section class="section">
+                <h2 class="section-title">Summary</h2>
+                <p class="summary-text">Innovative software engineer with 8+ years of experience developing scalable web applications. Proven track record of leading cross-functional teams and delivering high-impact solutions that increased user engagement by 45% and reduced system downtime by 60%.</p>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Senior Software Engineer</h3>
+                        <span class="job-date">Jan 2021 - Present</span>
+                    </div>
+                    <div class="company-name">TechFlow Solutions</div>
+                    <p class="job-description">Lead development of microservices architecture serving 2M+ daily active users</p>
+                    <ul class="achievements">
+                        <li>Architected and implemented scalable API gateway reducing response times by 40%</li>
+                        <li>Led team of 6 engineers in migrating legacy systems to cloud-native infrastructure</li>
+                        <li>Implemented automated testing pipelines increasing deployment confidence by 85%</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Software Engineer II</h3>
+                        <span class="job-date">Mar 2019 - Dec 2020</span>
+                    </div>
+                    <div class="company-name">DataVision Corp</div>
+                    <p class="job-description">Developed real-time analytics platform processing 10TB+ data daily</p>
+                    <ul class="achievements">
+                        <li>Built machine learning pipeline increasing prediction accuracy by 35%</li>
+                        <li>Optimized database queries reducing processing time from hours to minutes</li>
+                        <li>Mentored 3 junior developers and established code review best practices</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3 class="job-title">Software Developer</h3>
+                        <span class="job-date">Jun 2016 - Feb 2019</span>
+                    </div>
+                    <div class="company-name">StartupHub Inc</div>
+                    <p class="job-description">Full-stack development for e-commerce platform serving 500K+ customers</p>
+                    <ul class="achievements">
+                        <li>Developed responsive web application using React and Node.js</li>
+                        <li>Implemented payment processing system handling $2M+ monthly transactions</li>
+                        <li>Created automated deployment system reducing release time by 70%</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-grid">
+                    <div class="education-item">
+                        <div class="degree">Master of Science in Computer Science</div>
+                        <div class="school">Stanford University</div>
+                        <div class="education-details">2016 • GPA: 3.8/4.0</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Bachelor of Science in Software Engineering</div>
+                        <div class="school">UC Berkeley</div>
+                        <div class="education-details">2014 • GPA: 3.7/4.0</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Additional Information</h2>
+                <div class="additional-info">
+                    <div class="info-card">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">JavaScript/TypeScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">React/Vue.js</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">AWS/Azure</span>
+                            <span class="skill-tag">Docker/Kubernetes</span>
+                            <span class="skill-tag">PostgreSQL/MongoDB</span>
+                            <span class="skill-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Languages</h3>
+                        <ul class="info-list">
+                            <li>English (Native)</li>
+                            <li>Mandarin (Fluent)</li>
+                            <li>Spanish (Conversational)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Key Projects</h3>
+                        <div class="project-item">
+                            <div class="project-name">OpenSource Analytics Engine</div>
+                            <div class="project-description">Led development of open-source real-time analytics engine with 2K+ GitHub stars</div>
+                            <div class="project-tech">Python, Apache Kafka, Redis, Docker</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-name">E-commerce Mobile App</div>
+                            <div class="project-description">Built cross-platform mobile app generating $500K+ revenue in first year</div>
+                            <div class="project-tech">React Native, Firebase, Stripe API</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Certifications</h3>
+                        <ul class="info-list">
+                            <li>AWS Solutions Architect Professional (2023)</li>
+                            <li>Certified Kubernetes Administrator (2022)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const colorSchemes = {
+            blue: { primary: '#4a90e2', secondary: '#357abd', accent: '#7bb3f0' },
+            green: { primary: '#27ae60', secondary: '#229954', accent: '#58d68d' },
+            purple: { primary: '#8e44ad', secondary: '#7d3c98', accent: '#bb8fce' },
+            teal: { primary: '#16a085', secondary: '#138d75', accent: '#5dade2' },
+            orange: { primary: '#e67e22', secondary: '#d35400', accent: '#f8c471' },
+            navy: { primary: '#2c3e50', secondary: '#1b2631', accent: '#5d6d7e' }
+        };
+        
+        function changeColor(color) {
+            const scheme = colorSchemes[color];
+            document.documentElement.style.setProperty('--primary-color', scheme.primary);
+            document.documentElement.style.setProperty('--secondary-color', scheme.secondary);
+            document.documentElement.style.setProperty('--accent-color', scheme.accent);
+        }
+        
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function applyColorFromUrl(color) {
+            if (color && color !== '') {
+                // Apply color directly to CSS variables
+                document.documentElement.style.setProperty('--primary-color', color);
+                document.documentElement.style.setProperty('--secondary-color', color);
+                document.documentElement.style.setProperty('--accent-color', color);
+                
+                console.log('Applied URL color theme:', color);
+            }
+        }
+        
+        // Initialize the template
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for URL color parameter first
+            const urlColor = getUrlParameter('color');
+            if (urlColor) {
+                applyColorFromUrl(urlColor);
+            } else {
+                // Set default color
+                changeColor('blue');
+            }
+            
+            console.log('Professional Single Column template loaded with color support');
+        });
+    </script>
+</body>
+</html>

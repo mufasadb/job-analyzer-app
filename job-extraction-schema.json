@@ -1,0 +1,207 @@
+{
+  "name": "extract_job_details",
+  "description": "Extract structured job posting information from HTML content",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "job_title": {
+        "type": "string",
+        "description": "The job title or position name"
+      },
+      "company_information": {
+        "type": "object",
+        "properties": {
+          "company_name": {
+            "type": "string",
+            "description": "Name of the hiring company"
+          },
+          "company_size": {
+            "type": "string",
+            "description": "Company size if mentioned (e.g., '500-1000 employees')"
+          },
+          "industry": {
+            "type": "string",
+            "description": "Industry or sector the company operates in"
+          },
+          "location": {
+            "type": "string",
+            "description": "Company location or job location"
+          },
+          "company_description": {
+            "type": "string",
+            "description": "Brief description about the company"
+          }
+        },
+        "required": ["company_name"]
+      },
+      "requirements": {
+        "type": "object",
+        "properties": {
+          "must_have": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Essential requirements, qualifications, or skills that are mandatory"
+          },
+          "experience_level": {
+            "type": "string",
+            "description": "Required years of experience (e.g., '3-5 years', 'Entry level', 'Senior level')"
+          },
+          "education": {
+            "type": "string",
+            "description": "Educational requirements (e.g., 'Bachelor's degree in Computer Science')"
+          },
+          "technical_skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific technical skills or technologies required"
+          },
+          "certifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Required certifications or licenses"
+          }
+        }
+      },
+      "recommended_desirable": {
+        "type": "object",
+        "properties": {
+          "preferred_skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Nice-to-have skills that would be advantageous"
+          },
+          "preferred_experience": {
+            "type": "string",
+            "description": "Preferred additional experience"
+          },
+          "preferred_qualifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Additional qualifications that would be beneficial"
+          }
+        }
+      },
+      "salary_information": {
+        "type": "object",
+        "properties": {
+          "salary_range": {
+            "type": "string",
+            "description": "Salary range if mentioned (e.g., '$80,000 - $120,000', '£45k-60k')"
+          },
+          "salary_type": {
+            "type": "string",
+            "enum": ["annual", "hourly", "daily", "contract", "not_specified"],
+            "description": "Type of salary structure"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency of the salary (e.g., 'USD', 'GBP', 'EUR')"
+          },
+          "additional_compensation": {
+            "type": "string",
+            "description": "Bonuses, equity, commission, or other compensation details"
+          }
+        }
+      },
+      "benefits": {
+        "type": "object",
+        "properties": {
+          "health_insurance": {
+            "type": "boolean",
+            "description": "Whether health insurance is mentioned"
+          },
+          "retirement_plans": {
+            "type": "boolean",
+            "description": "Whether retirement/pension plans are mentioned"
+          },
+          "paid_time_off": {
+            "type": "string",
+            "description": "Vacation, PTO, or holiday information"
+          },
+          "remote_work": {
+            "type": "string",
+            "enum": ["fully_remote", "hybrid", "on_site", "flexible", "not_specified"],
+            "description": "Remote work policy"
+          },
+          "professional_development": {
+            "type": "string",
+            "description": "Learning, training, or development opportunities"
+          },
+          "other_benefits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Other benefits mentioned (gym membership, free food, etc.)"
+          }
+        }
+      },
+      "job_details": {
+        "type": "object",
+        "properties": {
+          "employment_type": {
+            "type": "string",
+            "enum": ["full_time", "part_time", "contract", "temporary", "internship", "freelance", "not_specified"],
+            "description": "Type of employment"
+          },
+          "job_function": {
+            "type": "string",
+            "description": "Department or function (e.g., 'Engineering', 'Marketing', 'Sales')"
+          },
+          "seniority_level": {
+            "type": "string",
+            "enum": ["entry_level", "associate", "mid_senior", "director", "executive", "not_specified"],
+            "description": "Seniority level of the position"
+          },
+          "reporting_structure": {
+            "type": "string",
+            "description": "Who this role reports to or manages"
+          }
+        }
+      },
+      "additional_information": {
+        "type": "object",
+        "properties": {
+          "application_deadline": {
+            "type": "string",
+            "description": "Application deadline if mentioned"
+          },
+          "start_date": {
+            "type": "string",
+            "description": "Expected start date if mentioned"
+          },
+          "travel_requirements": {
+            "type": "string",
+            "description": "Any travel requirements for the role"
+          },
+          "visa_sponsorship": {
+            "type": "boolean",
+            "description": "Whether visa sponsorship is available"
+          },
+          "security_clearance": {
+            "type": "string",
+            "description": "Any security clearance requirements"
+          },
+          "other_notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Any other relevant information from the job posting"
+          }
+        }
+      }
+    },
+    "required": ["job_title", "company_information"]
+  }
+}

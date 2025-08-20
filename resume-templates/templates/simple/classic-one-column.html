@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{personal.name}} - Resume</title>
+    <link rel="stylesheet" href="../../styles/classic-one-column.css">
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header Section - Exact Estelle Darcy Style -->
+        <header class="header">
+            <h1 class="name-header">{{personal.name}}</h1>
+            <h2 class="job-title">{{personal.title}}</h2>
+            <div class="contact-info">{{personal.location}} | {{personal.email}} | {{personal.phone}}</div>
+        </header>
+
+        <!-- Summary Section -->
+        <section class="section">
+            <h3 class="section-title">SUMMARY</h3>
+            <p class="summary">{{summary}}</p>
+        </section>
+
+        <!-- Professional Skills Section - Two Column Layout -->
+        <section class="section">
+            <h3 class="section-title">PROFESSIONAL SKILLS</h3>
+            <div class="skills-container">
+                <div class="skill-column">
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">Technical Skills</h4>
+                        <ul class="skill-list">
+                            {{#each skills.technical}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="skill-column">
+                    <div class="skill-category">
+                        <h4 class="skill-category-title">Core Competencies</h4>
+                        <ul class="skill-list">
+                            {{#each skills.soft}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section class="section">
+            <h3 class="section-title">PROFESSIONAL EXPERIENCE</h3>
+            {{#each experience}}
+            <div class="experience-item">
+                <div class="job-header">
+                    <div class="job-info">
+                        <div class="position-title">{{title}}, {{company}}</div>
+                    </div>
+                    <div class="date-range">{{startDate}} - {{#if current}}Present{{else}}{{endDate}}{{/if}}</div>
+                </div>
+                {{#if achievements}}
+                <ul class="achievement-list">
+                    {{#each achievements}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+                {{/if}}
+            </div>
+            {{/each}}
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h3 class="section-title">PROJECTS</h3>
+            {{#each projects}}
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-name">{{name}}</div>
+                    <div class="project-date">2023</div>
+                </div>
+                <div class="project-university">Personal Project</div>
+                <ul class="project-details">
+                    <li>{{description}}</li>
+                    {{#if technologies}}
+                    <li>Technologies used: {{#each technologies}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</li>
+                    {{/if}}
+                </ul>
+            </div>
+            {{/each}}
+        </section>
+
+        <!-- Education Section -->
+        <section class="section">
+            <h3 class="section-title">EDUCATION</h3>
+            {{#each education}}
+            <div class="education-item">
+                <div class="education-header">
+                    <div class="edu-info">
+                        <div class="degree">{{degree}}, {{school}}</div>
+                    </div>
+                    <div class="edu-date">{{year}}</div>
+                </div>
+                <div class="coursework">Relevant Coursework: Software Architecture, Distributed Systems, Machine Learning, Database Design</div>
+            </div>
+            {{/each}}
+        </section>
+
+        <!-- Additional Information Section -->
+        <section class="section">
+            <h3 class="section-title">ADDITIONAL INFORMATION</h3>
+            <div class="additional-info">
+                {{#if skills.languages}}
+                <div class="info-item">
+                    <span class="info-label">Languages:</span> {{#each skills.languages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+                </div>
+                {{/if}}
+                {{#if certifications}}
+                <div class="info-item">
+                    <span class="info-label">Certifications:</span> {{#each certifications}}{{name}} ({{date}}){{#unless @last}}, {{/unless}}{{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Template rendering function
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple data loading for demonstration
+            if (typeof window !== 'undefined') {
+                fetch('../../data/sample-data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Resume data loaded successfully');
+                    })
+                    .catch(error => console.error('Error loading data:', error));
+            }
+        });
+    </script>
+</body>
+</html>

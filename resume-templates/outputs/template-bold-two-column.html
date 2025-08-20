@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Alexandra Chen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .color-picker {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .color-picker select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 11in;
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 35%;
+            background-color: var(--primary-color, #2c5aa0);
+            padding: 15px 15px;
+            color: white;
+            position: relative;
+        }
+        
+        .photo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            text-align: center;
+            line-height: 1.1;
+        }
+        
+        .title {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 300;
+            line-height: 1.1;
+        }
+        
+        .content {
+            width: 65%;
+            padding: 25px 25px;
+            background: white;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            line-height: 1.1;
+        }
+        
+        .sidebar .section-title {
+            color: white;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .content .section-title {
+            color: var(--primary-color, #2c5aa0);
+            border-bottom: 2px solid var(--primary-color, #2c5aa0);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            width: 20px;
+            margin-right: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .degree {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+        
+        .school {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+        
+        .year {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 8px;
+        }
+        
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .languages-list {
+            list-style: none;
+        }
+        
+        .languages-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .languages-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .profile-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .job-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color, #2c5aa0);
+            margin-bottom: 5px;
+        }
+        
+        .company-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .job-description {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        .achievements {
+            list-style: none;
+        }
+        
+        .achievements li {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .achievements li::before {
+            content: "●";
+            color: var(--primary-color, #2c5aa0);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .references-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .reference-item {
+            margin-bottom: 15px;
+        }
+        
+        .reference-name {
+            font-weight: bold;
+            color: var(--primary-color, #2c5aa0);
+            font-size: 14px;
+        }
+        
+        .reference-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        
+        .reference-contact {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        @media print {
+            .color-picker { display: none; }
+            .resume-container { box-shadow: none; }
+            body { -webkit-print-color-adjust: exact; }
+        }
+        
+        @media (max-width: 768px) {
+            .resume-container { flex-direction: column; }
+            .sidebar, .content { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="color-picker">
+        <label for="colorSelect">Theme Color:</label>
+        <select id="colorSelect" onchange="changeColor(this.value)">
+            <option value="blue">Blue (Default)</option>
+            <option value="navy">Navy</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="teal">Teal</option>
+            <option value="dark">Dark Gray</option>
+        </select>
+    </div>
+
+    <div class="resume-container">
+        <aside class="sidebar">
+            <div class="photo-placeholder">
+                Professional Photo Placeholder
+            </div>
+            
+            <h1 class="name">Alexandra Chen</h1>
+            <p class="title">Senior Software Engineer</p>
+            
+            <section class="sidebar-section">
+                <h2 class="section-title">Contact</h2>
+                <ul class="contact-info">
+                    <li><span>📧</span> alexandra.chen@email.com</li>
+                    <li><span>📱</span> (555) 123-4567</li>
+                    <li><span>📍</span> San Francisco, CA</li>
+                </ul>
+            </section>
+            
+            <section class="sidebar-section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="degree">Master of Science</div>
+                    <div class="degree">Computer Science</div>
+                    <div class="school">Stanford University</div>
+                    <div class="year">2016 • GPA: 3.8</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Science</div>
+                    <div class="degree">Software Engineering</div>
+                    <div class="school">UC Berkeley</div>
+                    <div class="year">2014 • GPA: 3.7</div>
+                </div>
+            </section>
+            
+            <section class="sidebar-section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">JavaScript/TypeScript</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">React/Vue.js</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">AWS/Azure</div>
+                    <div class="skill-item">Docker/Kubernetes</div>
+                    <div class="skill-item">PostgreSQL/MongoDB</div>
+                    <div class="skill-item">Machine Learning</div>
+                </div>
+            </section>
+            
+            <section class="sidebar-section">
+                <h2 class="section-title">Languages</h2>
+                <ul class="languages-list">
+                    <li>English (Native)</li>
+                    <li>Mandarin (Fluent)</li>
+                    <li>Spanish (Conversational)</li>
+                </ul>
+            </section>
+        </aside>
+        
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">Profile</h2>
+                <p class="profile-text">Innovative software engineer with 8+ years of experience developing scalable web applications. Proven track record of leading cross-functional teams and delivering high-impact solutions that increased user engagement by 45% and reduced system downtime by 60%.</p>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Senior Software Engineer</h3>
+                    <div class="company-date">TechFlow Solutions | Jan 2021 - Present</div>
+                    <p class="job-description">Lead development of microservices architecture serving 2M+ daily active users</p>
+                    <ul class="achievements">
+                        <li>Architected and implemented scalable API gateway reducing response times by 40%</li>
+                        <li>Led team of 6 engineers in migrating legacy systems to cloud-native infrastructure</li>
+                        <li>Implemented automated testing pipelines increasing deployment confidence by 85%</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Software Engineer II</h3>
+                    <div class="company-date">DataVision Corp | Mar 2019 - Dec 2020</div>
+                    <p class="job-description">Developed real-time analytics platform processing 10TB+ data daily</p>
+                    <ul class="achievements">
+                        <li>Built machine learning pipeline increasing prediction accuracy by 35%</li>
+                        <li>Optimized database queries reducing processing time from hours to minutes</li>
+                        <li>Mentored 3 junior developers and established code review best practices</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Software Developer</h3>
+                    <div class="company-date">StartupHub Inc | Jun 2016 - Feb 2019</div>
+                    <p class="job-description">Full-stack development for e-commerce platform serving 500K+ customers</p>
+                    <ul class="achievements">
+                        <li>Developed responsive web application using React and Node.js</li>
+                        <li>Implemented payment processing system handling $2M+ monthly transactions</li>
+                        <li>Created automated deployment system reducing release time by 70%</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="references-section">
+                <h2 class="section-title" style="border-bottom: none; color: #333;">References</h2>
+                <div class="reference-item">
+                    <div class="reference-name">Available upon request</div>
+                    <div class="reference-title">Professional references and recommendations</div>
+                    <div class="reference-contact">can be provided during interview process</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const colorSchemes = {
+            blue: '#2c5aa0',
+            navy: '#1a365d',
+            green: '#2d5a27',
+            purple: '#553c9a',
+            teal: '#0f766e',
+            dark: '#374151'
+        };
+        
+        function changeColor(color) {
+            const colorValue = colorSchemes[color];
+            document.documentElement.style.setProperty('--primary-color', colorValue);
+        }
+        
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function applyColorFromUrl(color) {
+            if (color && color !== '') {
+                // Apply color directly to CSS variables
+                document.documentElement.style.setProperty('--primary-color', color);
+                
+                console.log('Applied URL color theme:', color);
+            }
+        }
+        
+        // Initialize the template
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for URL color parameter first
+            const urlColor = getUrlParameter('color');
+            if (urlColor) {
+                applyColorFromUrl(urlColor);
+            } else {
+                // Set default color
+                changeColor('blue');
+            }
+            
+            console.log('Bold Two-Column template loaded with color support');
+        });
+    </script>
+</body>
+</html>

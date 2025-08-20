@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Templates - Generated Files</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .template-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .template-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .template-description {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .file-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .file-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s ease;
+            font-size: 0.9em;
+        }
+        
+        .file-link:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            text-decoration: none;
+            color: #1976d2;
+        }
+        
+        .file-icon {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        .file-type {
+            font-size: 0.8em;
+            color: #666;
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        
+        .stats {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #666;
+        }
+        
+        .html { background: #ff6b35; color: white; }
+        .pdf { background: #dc2626; color: white; }
+        .docx { background: #2563eb; color: white; }
+        
+        .preview-note {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 20px 0;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .section-header:first-of-type {
+            border-top: none;
+            margin-top: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 1em;
+            margin: 0;
+        }
+        
+        .color-demo {
+            display: inline-block;
+            background: linear-gradient(45deg, #4a90e2, #27ae60, #8e44ad, #16a085);
+            padding: 3px 8px;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.8em;
+            margin-left: 5px;
+            font-weight: 500;
+        }
+        
+        .color-picker-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .color-picker-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .color-picker-description {
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .color-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        
+        .color-option.selected {
+            border-color: #333;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .color-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .custom-color-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .custom-color-input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        
+        .color-info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            color: #1565c0;
+            font-size: 0.85em;
+            margin-top: 15px;
+        }
+        
+        .selected-color-display {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+            vertical-align: middle;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .container { padding: 20px; }
+            h1 { font-size: 2em; }
+            .templates-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .color-options { gap: 10px; }
+            .color-option { width: 40px; height: 40px; }
+            .custom-color-section { flex-direction: column; gap: 5px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Templates</h1>
+        <p class="subtitle">Professional HTML resume templates with PDF and Word document exports</p>
+        
+        <div class="section-header">
+            <h2>Single Column Layouts</h2>
+            <p>Clean, traditional single-column designs that work well for most industries</p>
+        </div>
+        
+        <div class="templates-grid">
+            <!-- Color Picker Section -->
+            <div class="color-picker-section">
+                <h3 class="color-picker-title">🎨 Choose Your Color Theme</h3>
+                <p class="color-picker-description">Select a color theme for your resume templates. The color will be applied to section headers, bullet points, and accent elements.</p>
+                
+                <div class="color-options">
+                    <div class="color-option selected" data-color="#4a90e2" style="background-color: #4a90e2;" title="Professional Blue"></div>
+                    <div class="color-option" data-color="#27ae60" style="background-color: #27ae60;" title="Success Green"></div>
+                    <div class="color-option" data-color="#e74c3c" style="background-color: #e74c3c;" title="Corporate Red"></div>
+                    <div class="color-option" data-color="#8e44ad" style="background-color: #8e44ad;" title="Creative Purple"></div>
+                    <div class="color-option" data-color="#f39c12" style="background-color: #f39c12;" title="Energetic Orange"></div>
+                    <div class="color-option" data-color="#16a085" style="background-color: #16a085;" title="Modern Teal"></div>
+                </div>
+                
+                <div class="custom-color-section">
+                    <label for="customColor" style="font-size: 0.9em; color: #666;">Custom Color:</label>
+                    <input type="color" id="customColor" class="custom-color-input" value="#4a90e2">
+                </div>
+                
+                <div class="color-info">
+                    <strong>Selected Color:</strong> <span class="selected-color-display" style="background-color: #4a90e2;"></span>
+                    <span id="selectedColorName">Professional Blue</span> (<span id="selectedColorHex">#4a90e2</span>)
+                    <br><small>Click on any template below to apply this color theme!</small>
+                </div>
+            </div>
+            
+            <div class="template-card">
+                <h3 class="template-title">Classic One Column <span class="color-demo">Dynamic Colors</span></h3>
+                <p class="template-description">Traditional single-column layout inspired by the Estelle Darcy design. Features clean typography, two-column skills layout, and professional styling with customizable color themes.</p>
+                
+                <div class="file-links">
+                    <a href="#" class="file-link template-link" data-template="classic-one-column-estelle-style.html" target="_blank">
+                        <span>
+                            <span class="file-icon">🌐</span>
+                            View HTML Template
+                        </span>
+                        <span class="file-type html">HTML</span>
+                    </a>
+                    <a href="classic-one-column.pdf" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">📄</span>
+                            Download PDF Version
+                        </span>
+                        <span class="file-type pdf">PDF</span>
+                    </a>
+                    <a href="classic-one-column.docx" class="file-link">
+                        <span>
+                            <span class="file-icon">📝</span>
+                            Download Word Document
+                        </span>
+                        <span class="file-type docx">DOCX</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="template-card">
+                <h3 class="template-title">Professional Single Column</h3>
+                <p class="template-description">Modern single-column design with card-based layout and gradient header. Features customizable color themes and professional styling.</p>
+                
+                <div class="file-links">
+                    <a href="template-single-column.html" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">🌐</span>
+                            View HTML Template
+                        </span>
+                        <span class="file-type html">HTML</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="template-card">
+                <h3 class="template-title">White Space Emphasis</h3>
+                <p class="template-description">Executive-style template with generous white space, elegant typography, and premium feel. Perfect for senior positions and creative professionals.</p>
+                
+                <div class="file-links">
+                    <a href="template-single-column-whitespace.html" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">🌐</span>
+                            View HTML Template
+                        </span>
+                        <span class="file-type html">HTML</span>
+                    </a>
+                    <a href="white-space-emphasis-rendered.html" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">📋</span>
+                            View Generated Version
+                        </span>
+                        <span class="file-type html">HTML</span>
+                    </a>
+                    <a href="white-space-emphasis.pdf" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">📄</span>
+                            Download PDF Version
+                        </span>
+                        <span class="file-type pdf">PDF</span>
+                    </a>
+                    <a href="white-space-emphasis.docx" class="file-link">
+                        <span>
+                            <span class="file-icon">📝</span>
+                            Download Word Document
+                        </span>
+                        <span class="file-type docx">DOCX</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">
+            <h2>Two Column Layouts</h2>
+            <p>Sidebar-based designs perfect for highlighting skills and maximizing information density</p>
+        </div>
+        
+        <div class="templates-grid">
+            <div class="template-card">
+                <h3 class="template-title">Modern Two Column</h3>
+                <p class="template-description">Contemporary two-column design with sidebar for skills and contact info. Great for showcasing technical skills and experience.</p>
+                
+                <div class="file-links">
+                    <a href="modern-two-column-rendered.html" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">🌐</span>
+                            View HTML Template
+                        </span>
+                        <span class="file-type html">HTML</span>
+                    </a>
+                    <a href="modern-two-column.pdf" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">📄</span>
+                            Download PDF Version
+                        </span>
+                        <span class="file-type pdf">PDF</span>
+                    </a>
+                    <a href="modern-two-column.docx" class="file-link">
+                        <span>
+                            <span class="file-icon">📝</span>
+                            Download Word Document
+                        </span>
+                        <span class="file-type docx">DOCX</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="template-card">
+                <h3 class="template-title">Bold Two Column</h3>
+                <p class="template-description">Strong, impactful two-column design with bold sidebar and prominent header. Perfect for making a strong first impression.</p>
+                
+                <div class="file-links">
+                    <a href="template-bold-two-column.html" class="file-link" target="_blank">
+                        <span>
+                            <span class="file-icon">🌐</span>
+                            View HTML Template
+                        </span>
+                        <span class="file-type html">HTML</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="stats">
+            <strong>Template Features:</strong><br>
+            🎨 <strong>5 Professional Templates</strong> • 📱 <strong>Mobile Responsive</strong> • 🖨️ <strong>Print Optimized</strong><br>
+            <span class="color-demo">Dynamic Color Themes</span> • PDF & Word Export Available<br>
+            📊 Total: 5 HTML templates + 3 PDF files + 3 Word documents
+        </div>
+        
+        <p class="preview-note">
+            💡 <strong>Color Picker Support:</strong> Classic One Column, Professional Single Column, White Space Emphasis, Bold Two Column<br>
+            📝 All templates use sample data (Alexandra Chen). Replace with your own information to customize.<br>
+            🎨 <strong>New!</strong> Dynamic color theming - select your color above and click any template link to apply it!
+        </p>
+        
+        <script>
+            // Color picker functionality
+            let selectedColor = '#4a90e2';
+            
+            // Color name mapping
+            const colorNames = {
+                '#4a90e2': 'Professional Blue',
+                '#27ae60': 'Success Green',
+                '#e74c3c': 'Corporate Red',
+                '#8e44ad': 'Creative Purple',
+                '#f39c12': 'Energetic Orange',
+                '#16a085': 'Modern Teal'
+            };
+            
+            // Update selected color display
+            function updateSelectedColor(color, name = null) {
+                selectedColor = color;
+                
+                // Update visual indicators
+                document.querySelector('.selected-color-display').style.backgroundColor = color;
+                document.getElementById('selectedColorHex').textContent = color;
+                
+                // Update color name
+                const colorName = name || colorNames[color] || 'Custom Color';
+                document.getElementById('selectedColorName').textContent = colorName;
+                
+                // Update selection indicators
+                document.querySelectorAll('.color-option').forEach(option => {
+                    option.classList.remove('selected');
+                    if (option.dataset.color === color) {
+                        option.classList.add('selected');
+                    }
+                });
+            }
+            
+            // Handle preset color selection
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const color = this.dataset.color;
+                    const name = this.getAttribute('title');
+                    updateSelectedColor(color, name);
+                    
+                    // Update custom color input
+                    document.getElementById('customColor').value = color;
+                });
+            });
+            
+            // Handle custom color input
+            document.getElementById('customColor').addEventListener('input', function(e) {
+                const color = e.target.value;
+                updateSelectedColor(color, 'Custom Color');
+            });
+            
+            // Handle template links with color parameter
+            document.querySelectorAll('.template-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const template = this.dataset.template;
+                    const url = `${template}?color=${encodeURIComponent(selectedColor)}`;
+                    window.open(url, '_blank');
+                });
+            });
+            
+            // Add template-link class to other color-supported templates
+            document.addEventListener('DOMContentLoaded', function() {
+                // Find links to templates that support colors
+                const colorSupportedTemplates = [
+                    'template-single-column.html',
+                    'template-single-column-whitespace.html',
+                    'template-bold-two-column.html',
+                    'white-space-emphasis-rendered.html'
+                ];
+                
+                document.querySelectorAll('.file-link').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (colorSupportedTemplates.some(template => href && href.includes(template))) {
+                        link.classList.add('template-link');
+                        link.dataset.template = href;
+                        
+                        // Update click handler
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const template = this.dataset.template;
+                            const url = `${template}?color=${encodeURIComponent(selectedColor)}`;
+                            window.open(url, '_blank');
+                        });
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

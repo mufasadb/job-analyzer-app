@@ -1,0 +1,48 @@
+{
+  "name": "resume-templates",
+  "version": "1.0.0",
+  "description": "Reusable HTML resume templates with PDF/Word conversion capabilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test-simple-templates.js",
+    "test:simple": "node test-simple-templates.js",
+    "preview": "node -e \"const { PreviewSystem } = require('./conversion/preview-system'); new PreviewSystem().init().then(() => console.log('Preview system ready'))\"",
+    "install-deps": "npm install handlebars puppeteer html-docx-js",
+    "setup": "npm run install-deps && mkdir -p outputs screenshots"
+  },
+  "keywords": [
+    "resume",
+    "templates",
+    "html",
+    "pdf",
+    "word",
+    "conversion",
+    "handlebars"
+  ],
+  "author": "Resume Template System",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "html-docx-js": "^0.3.1",
+    "puppeteer": "^21.11.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "local"
+  },
+  "bugs": {
+    "url": "https://github.com/your-repo/issues"
+  },
+  "homepage": "https://github.com/your-repo#readme",
+  "directories": {
+    "templates": "./templates",
+    "styles": "./styles",
+    "data": "./data",
+    "conversion": "./conversion",
+    "screenshots": "./screenshots",
+    "outputs": "./outputs"
+  }
+}

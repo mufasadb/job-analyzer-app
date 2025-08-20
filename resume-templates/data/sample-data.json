@@ -1,0 +1,133 @@
+{
+  "personal": {
+    "name": "Alexandra Chen",
+    "title": "Senior Software Engineer",
+    "email": "alexandra.chen@email.com",
+    "phone": "(555) 123-4567",
+    "location": "San Francisco, CA",
+    "photo": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face"
+  },
+  "summary": "Innovative software engineer with 8+ years of experience developing scalable web applications. Proven track record of leading cross-functional teams and delivering high-impact solutions that increased user engagement by 45% and reduced system downtime by 60%.",
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "TechFlow Solutions",
+      "startDate": "Jan 2021",
+      "endDate": "Present",
+      "current": true,
+      "description": "Lead development of microservices architecture serving 2M+ daily active users",
+      "achievements": [
+        "Architected and implemented scalable API gateway reducing response times by 40%",
+        "Led team of 6 engineers in migrating legacy systems to cloud-native infrastructure",
+        "Implemented automated testing pipelines increasing deployment confidence by 85%"
+      ]
+    },
+    {
+      "title": "Software Engineer II",
+      "company": "DataVision Corp",
+      "startDate": "Mar 2019",
+      "endDate": "Dec 2020",
+      "current": false,
+      "description": "Developed real-time analytics platform processing 10TB+ data daily",
+      "achievements": [
+        "Built machine learning pipeline increasing prediction accuracy by 35%",
+        "Optimized database queries reducing processing time from hours to minutes",
+        "Mentored 3 junior developers and established code review best practices"
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "StartupHub Inc",
+      "startDate": "Jun 2016",
+      "endDate": "Feb 2019",
+      "current": false,
+      "description": "Full-stack development for e-commerce platform serving 500K+ customers",
+      "achievements": [
+        "Developed responsive web application using React and Node.js",
+        "Implemented payment processing system handling $2M+ monthly transactions",
+        "Created automated deployment system reducing release time by 70%"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science in Computer Science",
+      "school": "Stanford University",
+      "year": "2016",
+      "gpa": "3.8"
+    },
+    {
+      "degree": "Bachelor of Science in Software Engineering",
+      "school": "UC Berkeley",
+      "year": "2014",
+      "gpa": "3.7"
+    }
+  ],
+  "skills": {
+    "technical": [
+      "JavaScript/TypeScript",
+      "Python",
+      "React/Vue.js",
+      "Node.js",
+      "AWS/Azure",
+      "Docker/Kubernetes",
+      "PostgreSQL/MongoDB",
+      "Machine Learning"
+    ],
+    "soft": [
+      "Team Leadership",
+      "Agile/Scrum",
+      "Technical Writing",
+      "Mentoring",
+      "Public Speaking",
+      "Problem Solving"
+    ],
+    "languages": [
+      "English (Native)",
+      "Mandarin (Fluent)",
+      "Spanish (Conversational)"
+    ]
+  },
+  "projects": [
+    {
+      "name": "OpenSource Analytics Engine",
+      "description": "Led development of open-source real-time analytics engine with 2K+ GitHub stars",
+      "technologies": ["Python", "Apache Kafka", "Redis", "Docker"],
+      "link": "github.com/alexchen/analytics-engine"
+    },
+    {
+      "name": "E-commerce Mobile App",
+      "description": "Built cross-platform mobile app generating $500K+ revenue in first year",
+      "technologies": ["React Native", "Firebase", "Stripe API"],
+      "link": "app-store.com/ecommerce-app"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Solutions Architect Professional",
+      "issuer": "Amazon Web Services",
+      "date": "2023",
+      "id": "AWS-SAP-2023-AC"
+    },
+    {
+      "name": "Certified Kubernetes Administrator",
+      "issuer": "Cloud Native Computing Foundation",
+      "date": "2022",
+      "id": "CKA-2022-AC"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Employee of the Year",
+      "organization": "TechFlow Solutions",
+      "year": "2023",
+      "description": "Recognized for exceptional technical leadership and project delivery"
+    },
+    {
+      "name": "Best Innovation Award",
+      "organization": "DataVision Corp",
+      "year": "2020",
+      "description": "For developing breakthrough machine learning analytics platform"
+    }
+  ]
+}

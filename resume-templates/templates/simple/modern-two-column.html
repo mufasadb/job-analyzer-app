@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{personal.name}} - Resume</title>
+    <link rel="stylesheet" href="../../styles/modern-two-column.css">
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>{{personal.name}}</h1>
+            <p class="title">{{personal.title}}</p>
+            <div class="contact-info">
+                <span>{{personal.email}}</span>
+                <span>{{personal.phone}}</span>
+                <span>{{personal.location}}</span>
+            </div>
+        </header>
+
+        <!-- Content Area - Two Columns -->
+        <div class="content-area">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <!-- Contact Information -->
+                <section class="section">
+                    <h3 class="section-title">Contact</h3>
+                    <div class="contact-item">
+                        <div>
+                            <span class="contact-label">Email</span>
+                            {{personal.email}}
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div>
+                            <span class="contact-label">Phone</span>
+                            {{personal.phone}}
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div>
+                            <span class="contact-label">Location</span>
+                            {{personal.location}}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="section">
+                    <h3 class="section-title">Skills</h3>
+                    
+                    {{#if skills.technical}}
+                    <div class="skill-category">
+                        <h4>Technical Skills</h4>
+                        <div class="skill-tags">
+                            {{#each skills.technical}}
+                            <span class="skill-tag">{{this}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/if}}
+                    
+                    {{#if skills.soft}}
+                    <div class="skill-category">
+                        <h4>Core Competencies</h4>
+                        <p class="skill-list">{{join skills.soft ", "}}</p>
+                    </div>
+                    {{/if}}
+                    
+                    {{#if skills.languages}}
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <p class="skill-list">{{join skills.languages ", "}}</p>
+                    </div>
+                    {{/if}}
+                </section>
+
+                <!-- Certifications Section -->
+                {{#if certifications}}
+                <section class="section">
+                    <h3 class="section-title">Certifications</h3>
+                    {{#each certifications}}
+                    <div class="cert-item">
+                        <div class="cert-name">{{name}}</div>
+                        <div class="cert-details">{{issuer}}</div>
+                        <div class="cert-date">{{date}}</div>
+                    </div>
+                    {{/each}}
+                </section>
+                {{/if}}
+
+                <!-- Awards Section -->
+                {{#if awards}}
+                <section class="section">
+                    <h3 class="section-title">Awards</h3>
+                    {{#each awards}}
+                    <div class="award-item">
+                        <div class="award-name">{{name}}</div>
+                        <div class="award-details">{{organization}} • {{year}}</div>
+                    </div>
+                    {{/each}}
+                </section>
+                {{/if}}
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Summary Section -->
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="summary">{{summary}}</p>
+                </section>
+
+                <!-- Experience Section -->
+                <section class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    {{#each experience}}
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div class="job-title">{{title}}</div>
+                            <div class="company">{{company}}</div>
+                            <div class="date-location">
+                                {{startDate}} - {{#if current}}Present{{else}}{{endDate}}{{/if}}
+                            </div>
+                        </div>
+                        <p class="job-description">{{description}}</p>
+                        {{#if achievements}}
+                        <ul class="achievements">
+                            {{#each achievements}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </section>
+
+                <!-- Education Section -->
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    {{#each education}}
+                    <div class="education-item">
+                        <div class="degree">{{degree}}</div>
+                        <div class="school">{{school}}</div>
+                        <div class="edu-details">
+                            {{year}}{{#if gpa}} • GPA: {{gpa}}{{/if}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </section>
+
+                <!-- Projects Section -->
+                {{#if projects}}
+                <section class="section">
+                    <h2 class="section-title">Notable Projects</h2>
+                    {{#each projects}}
+                    <div class="project-item">
+                        <div class="project-name">{{name}}</div>
+                        <p class="project-description">{{description}}</p>
+                        {{#if technologies}}
+                        <p class="project-technologies">Technologies: {{join technologies ", "}}</p>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+                </section>
+                {{/if}}
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Template rendering function for demonstration
+        function renderTemplate(templateHtml, data) {
+            let rendered = templateHtml;
+            
+            // Simple template replacement (in real implementation, use Handlebars.js or similar)
+            // Replace simple variables
+            rendered = rendered.replace(/\{\{([^}]+)\}\}/g, (match, path) => {
+                const value = path.split('.').reduce((obj, key) => obj?.[key], data);
+                return value || '';
+            });
+            
+            return rendered;
+        }
+
+        // Helper function to join arrays
+        function joinArray(arr, separator) {
+            return Array.isArray(arr) ? arr.join(separator) : '';
+        }
+
+        // Load and render data if in browser environment
+        if (typeof window !== 'undefined') {
+            fetch('../../data/sample-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    // This would be handled by a proper template engine in production
+                    console.log('Sample data loaded:', data);
+                })
+                .catch(error => console.error('Error loading data:', error));
+        }
+    </script>
+</body>
+</html>
